@@ -2,22 +2,26 @@
 
 /**
  * Generates ASCII chessboard.
- * @param {number} size
+ * @param {number|string} size
  * @returns {string|null}
  */
 const chess = size => {
-    if (isNaN(parseInt(size)) || size < 2) return null;
+    if (isNaN((size = parseInt(size))) || size < 2) return null;
+    let row = [], board = [], flag = 1, result;
 
-    let row = '', board = '', flag = 1, rowShifted;
     for (let i = 0; i < size / 2 + 1; i++) {
-        row += "* ";
+        row.push('*', ' ');
     }
 
-    row = row.substring(0, size);
-    rowShifted = " " + row.substring(0, size - 1) + "\n";
-    row += "\n";
+    let rowFirst = row.slice(0, size);
+    let rowSecond = row.slice(1, size + 1);
 
-    for (let i = 0; i < size; i++, flag *= -1)
-        board += flag === 1 ? row : rowShifted;
-    return board;
+    rowFirst.push('\n');
+    rowSecond.push('\n');
+
+    for (let i = 0; i < size; i++, flag *= -1) {
+        flag === 1 ? board.push(rowFirst.join('')) : board.push(rowSecond.join(''));
+    }
+
+    return board.join('');
 };

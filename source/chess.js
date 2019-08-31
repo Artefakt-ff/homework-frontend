@@ -13,8 +13,8 @@ const chess = size => {
         row.push('*', ' ');
     }
 
-    let rowFirst = row.slice(0, size);
-    let rowSecond = row.slice(1, size + 1);
+    const rowFirst = row.slice(0, size);
+    const rowSecond = row.slice(1, size + 1);
 
     rowFirst.push('\n');
     rowSecond.push('\n');

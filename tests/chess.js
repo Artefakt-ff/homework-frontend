@@ -37,4 +37,8 @@ QUnit.module('Тестируем функцию chess', function () {
 		assert.strictEqual(chess('8'), expected);
 	});
 
+	QUnit.test("Неверный тип размера доски", function (assert) {
+		assert.strictEqual(chess("три"), null);
+	});
+
 });

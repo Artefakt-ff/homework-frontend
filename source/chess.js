@@ -7,7 +7,8 @@
  */
 const chess = size => {
     if (isNaN((size = parseInt(size))) || size < 2) return null;
-    let row = [], board = [], flag = 1, result;
+    const row = [], board = [];
+    let flag = 1;
 
     for (let i = 0; i < size / 2 + 1; i++) {
         row.push('*', ' ');

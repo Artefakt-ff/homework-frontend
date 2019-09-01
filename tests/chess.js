@@ -37,8 +37,27 @@ QUnit.module('Тестируем функцию chess', function () {
 		assert.strictEqual(chess('8'), expected);
 	});
 
-	QUnit.test("Неверный тип размера доски", function (assert) {
-		assert.strictEqual(chess("три"), null);
+	QUnit.test('Шахматная доска 9 на 9', function (assert) {
+		const expected =
+			'* * * * *\n' +
+			' * * * * \n' +
+			'* * * * *\n' +
+			' * * * * \n' +
+			'* * * * *\n' +
+			' * * * * \n' +
+			'* * * * *\n' +
+			' * * * * \n' +
+			'* * * * *\n';
+		assert.strictEqual(chess(9), expected);
+		assert.strictEqual(chess('9'), expected);
 	});
 
+	QUnit.test('Доски размером 0 на 0 не бывает', function (assert) {
+		assert.strictEqual(chess(0), null);
+		assert.strictEqual(chess('0'), null);
+	});
+
+	QUnit.test("Неверный аргумент", function (assert) {
+		assert.strictEqual(chess("три"), null);
+	});
 });
